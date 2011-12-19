@@ -12,7 +12,9 @@ Usage
     <import file="${ant.android.scala.dir}/build-scala.xml"/>
     <!-- Converts this project's .class files into .dex files -->
     <target name="-dex" depends="-compile, scala-compile, scala-shrink">
-        <scala-dex-helper />
+        <do-only-if-not-library elseText="Library project: do not dex..." >
+            <scala-dex-helper />
+        </do-only-if-not-library>
     </target>
     ```
 
