@@ -31,12 +31,14 @@ Using Android Scala Installer
 -----------------------------
 See [Android Scala Installer](https://github.com/jbrechtel/Android-Scala-Installer)
 
-Set `scala.library.installed=true` in `local.properties`, the building script will skip pro guard when you run `ant debug` or `ant debug install`, don't forget to add
+Set `scala.library.installed=true` in `local.properties`, the building script will skip proguard when you run `ant debug` or `ant debug install`, don't forget to add
 
+    ```xml
     <uses-library android:name="scala_actors-2.9.1"/>
     <uses-library android:name="scala_collection-2.9.1"/>
     <uses-library android:name="scala_immutable-2.9.1"/>
     <uses-library android:name="scala_library-2.9.1"/>
     <uses-library android:name="scala_mutable-2.9.1"/>
+    ```
 
-to the application element in you AndroidMenifest.xml
+to the application element in you AndroidManifest.xml
