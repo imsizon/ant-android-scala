@@ -173,7 +173,7 @@
             </and>
             <equals arg1="${project.is.library}" arg2="true" />
             <and>
-                <isset property="scala.library.installed" />
+                <equals arg1="${scala.library.installed}" arg2="true" />
                 <equals arg1="${infix}" arg2="-debug" />
             </and>
         </or></condition>
