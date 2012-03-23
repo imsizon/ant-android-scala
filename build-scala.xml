@@ -49,8 +49,7 @@
             destdir="${out.classes.absolute.dir}"
             bootclasspathref="android.target.classpath"
             logging="${logging}" addparams="${scalac.addparams}"
-            classpath="${extensible.classpath}"
-            classpathref="jar.libs.ref">
+            classpath="${extensible.classpath}">
             <src path="${gen.absolute.dir}" />
             <classpath>
                 <pathelement location="${scala-library.jar}" />
@@ -231,7 +230,7 @@
                     </then>
                     <else>
                         <path id="out.dex.jar.input.ref">
-                            <path refid="jar.libs.ref" />
+                            <fileset dir="${jar.libs.dir}" includes="*.jar" />
                         </path>
                     </else>
                 </if></else>
