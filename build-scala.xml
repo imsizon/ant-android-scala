@@ -108,6 +108,12 @@
                  <equals arg1="${root.target}" arg2="release" />
                  <equals arg1="${root.target}" arg2="install-release" />
             </or></condition>
+            <!-- If ${infix} has not been set, then the root target is not
+                 one that is supported. Give user a sensible error message. -->
+            <property name="infix" value="not-supported" />
+            <fail message="Your root target is '${root.target}'. This is not supported with Scala compilation.">
+                <condition><equals arg1="${infix}" arg2="not-supported" /></condition>
+            </fail>
             <!-- priority is given to local configuration if present -->
             <condition property="template.cfg" value="${configs.dir}/local${infix}.cfg">
                 <available file="${configs.dir}/local${infix}.cfg" />
