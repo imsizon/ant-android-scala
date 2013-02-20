@@ -7,7 +7,7 @@
     <property name="scala-compiler.jar" value="${scala.dir}/lib/scala-compiler.jar" />
     <property name="scala-library.jar" value="${scala.dir}/lib/scala-library.jar" />
     <!-- ProGuard (www.proguard.com) -->
-    <property name="proguard.jar" value="${proguard.dir}/libexec/proguard.jar" />
+    <property name="proguard.jar" value="${proguard.dir}/lib/proguard.jar" />
     <!-- Project settings -->
     <property name="configs.dir" value="${ant.android.scala.dir}/configs" />
     <property name="ant-invoked.jar" value="${configs.dir}/ant-invoked.jar" />
@@ -108,6 +108,12 @@
                  <equals arg1="${root.target}" arg2="release" />
                  <equals arg1="${root.target}" arg2="install-release" />
             </or></condition>
+            <!-- If ${infix} has not been set, then the root target is not
+                 one that is supported. Give user a sensible error message. -->
+            <property name="infix" value="not-supported" />
+            <fail message="Your root target is '${root.target}'. This is not supported with Scala compilation.">
+                <condition><equals arg1="${infix}" arg2="not-supported" /></condition>
+            </fail>
             <!-- priority is given to local configuration if present -->
             <condition property="template.cfg" value="${configs.dir}/local${infix}.cfg">
                 <available file="${configs.dir}/local${infix}.cfg" />
